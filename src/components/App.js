@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Header from './Header';
+import MainStats from './MainStats';
 import './App.css';
 
 function App() {
@@ -95,6 +96,9 @@ function App() {
   return (
     <div className="App">
       <Header onClick={search}/>
+      <Container>
+        { mainStats ? <MainStats stats={mainStats}/> : null} 
+      </Container>
     </div>
   );
 }
