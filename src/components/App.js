@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Header from './Header';
 import MainStats from './MainStats';
+import WeaponAndMapStats from './WeaponAndMapStats';
 import './App.css';
 
 function App() {
@@ -98,6 +99,7 @@ function App() {
       <Header onClick={search}/>
       <Container>
         { mainStats ? <MainStats stats={mainStats}/> : null} 
+        { weaponData ? <WeaponAndMapStats weapons={weaponData} maps={mapData}/> : null}
       </Container>
     </div>
   );
