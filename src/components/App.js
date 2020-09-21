@@ -5,15 +5,26 @@ import Col from 'react-bootstrap/Col';
 import Header from './Header';
 import MainStats from './MainStats';
 import WeaponAndMapStats from './WeaponAndMapStats';
+import ProfileData from './ProfileData';
 import './App.css';
 
 function App() {
   const [weaponData, setWeaponData] = useState();
   const [mapData, setMapData] = useState();
   const [mainStats, setMainStats] = useState();
+  const [profileData, setProfileData] = useState();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProfileData = async () => {
+      try {
+        const response = await fetch('profile_data.json');
+        const data = await response.json();
+        setProfileData(data.response.players[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    const fetchStatsData = async () => {
       try{
         const response = await fetch('csgo_response.json');
         const data = await response.json();
@@ -54,7 +65,8 @@ function App() {
         console.log(e);
       }
     }
-    fetchData();
+    fetchProfileData();
+    fetchStatsData();
   },[]);
 
   const getWeaponData = (name, value) => {
@@ -98,6 +110,7 @@ function App() {
     <div className="App">
       <Header onClick={search}/>
       <Container>
+        { profileData ? <ProfileData profile={profileData}/> : null}
         { mainStats ? <MainStats stats={mainStats}/> : null} 
         { weaponData ? <WeaponAndMapStats weapons={weaponData} maps={mapData}/> : null}
       </Container>

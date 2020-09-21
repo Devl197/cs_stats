@@ -1,0 +1,25 @@
+{
+    "response": {
+      "players": [
+        {
+          "steamid": "76561198047422083",
+          "communityvisibilitystate": 3,
+          "profilestate": 1,
+          "personaname": "devl1",
+          "commentpermission": 2,
+          "profileurl": "https://steamcommunity.com/id/Devl197/",
+          "avatar": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f4/f49d27c835a144ca0bdd43fa999e0b1a81f7229f.jpg",
+          "avatarmedium": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f4/f49d27c835a144ca0bdd43fa999e0b1a81f7229f_medium.jpg",
+          "avatarfull": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f4/f49d27c835a144ca0bdd43fa999e0b1a81f7229f_full.jpg",
+          "avatarhash": "f49d27c835a144ca0bdd43fa999e0b1a81f7229f",
+          "lastlogoff": 1599424917,
+          "personastate": 0,
+          "realname": "Aleksandar",
+          "primaryclanid": "103582791436072691",
+          "timecreated": 1314099595,
+          "personastateflags": 0,
+          "loccountrycode": "RS"
+        }
+      ]
+    }
+  }
