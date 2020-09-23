@@ -1,7 +1,4 @@
-
-/* html {
-  background: url('./images/csgo.jpg') no-repeat center center fixed;
-  background-size: cover;
-  height: 100%;
-  overflow: hidden;
-} */
+@font-face {
+  font-family: 'nameFont';
+  src: url(./fonts/mishmash.ttf);
+}
