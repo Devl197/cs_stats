@@ -1,0 +1,8 @@
+svg {
+    width: 50px;
+    height: auto;
+}
+
+.kd_heading, .kd_value{
+    font-style: italic;
+}
