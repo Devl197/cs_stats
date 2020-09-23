@@ -1,0 +1,32 @@
+.profile_name {
+    font-family: nameFont;
+}
+
+.online, .offline, .busy, .away, .snooze, .looking_to_trade, .looking_to_play{
+    border: 2px solid;
+}
+
+.online, .looking_to_trade, .looking_to_play{
+    border-color:#00DC7D;
+    color:#00DC7D;
+}
+
+.busy {
+    border-color: #E20338;
+    color:#E20338;
+}
+
+.away, .snooze{
+    border-color:#FFC11E;
+    color:#FFC11E;
+}
+
+.offline {
+    border-color:#8C8C8C;
+    color:#8C8C8C;
+}
+
+#state {
+    border: none;
+    font-weight: bold;
+}
