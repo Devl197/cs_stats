@@ -6,13 +6,19 @@ import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-const Header = ({onClick}) => {
+const Header = ({getProfileDataById, getProfileDataByUrl}) => {
     const [searchValue, setSearchValue] = useState('');
     const searchValueHandler = (event) => setSearchValue(event.target.value);
 
     const search = () => {
-        console.log(searchValue);
-        onClick();
+        if(searchValue !== ''){
+            const id = /\d{17}/;
+            if(id.test(searchValue)){
+                getProfileDataById(searchValue);
+            } else {
+                getProfileDataByUrl(searchValue);
+            }
+        }
     }
     return (  
         <Container fluid style={{backgroundColor: 'black'}}>
