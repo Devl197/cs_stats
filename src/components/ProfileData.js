@@ -15,8 +15,8 @@ const ProfileData = ({profile}) => {
             }
        return null;
     }
-    const returnStateString = (profileStateNum) => {
-        switch(profileStateNum){
+    const returnStateString = (personaStateNum) => {
+        switch(personaStateNum){
             case 0:
                 return 'Offline';
             case 1:
@@ -35,7 +35,7 @@ const ProfileData = ({profile}) => {
                 return 'Offline';
         }
     }
-    const state = returnStateString(profile.profilestate);
+    const state = returnStateString(profile.personastate);
     const fullCountryName = findCountry(profile.loccountrycode);
     return (  
         <Row className="pb-4 mt-3 border-bottom">
