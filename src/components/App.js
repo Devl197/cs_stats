@@ -5,7 +5,6 @@ import MainStats from './MainStats';
 import WeaponAndMapStats from './WeaponAndMapStats';
 import ProfileData from './ProfileData';
 import Alert from './Alert';
-import './App.css';
 
 function App() {
   const [weaponData, setWeaponData] = useState({});

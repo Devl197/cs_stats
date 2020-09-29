@@ -3,7 +3,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import Image from 'react-bootstrap/Image';
-import './WeaponAndMapStats.css';
 const WeaponAndMapStats = ({weapons, maps}) => {
     const weaponKeys = Object.keys(weapons);
     const mapKeys = Object.keys(maps);
