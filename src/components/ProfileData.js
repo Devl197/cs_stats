@@ -51,7 +51,7 @@ const ProfileData = ({profile}) => {
                     <Col md={10}>
                         <h1 className="profile_name">{profile.personaname}</h1>
                         <ul className="list-inline">
-                            <li className="list-inline-item"><a href={profile.profileurl} target="_blank" rel="noopener noreferrer" className="text-dark"><Image src={process.env.PUBLIC_URL + 'images/other_icons/steam-icon_8.png'} width="25px" height="25px"/> Steam profile</a></li>
+                            <li className="list-inline-item"><a href={profile.profileurl} target="_blank" rel="noopener noreferrer" className="text-dark"><Image src={process.env.PUBLIC_URL + 'images/other_icons/steam-icon.png'} width="25px" height="25px"/> Steam profile</a></li>
                             <li className="list-inline-item">{profile.realname}</li>
                             <li className="list-inline-item">{profile.loccountrycode ? <Image src={process.env.PUBLIC_URL + 'images/flags/' + profile.loccountrycode + '.png'} /> : null}</li>
                             <li className="list-inline-item">{fullCountryName ? fullCountryName : null}</li>

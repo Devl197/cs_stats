@@ -34,7 +34,7 @@ const Header = ({getProfileDataById, getProfileDataByUrl}) => {
                 <Col md={6}>
                 <InputGroup className="mb-3">
                     <FormControl
-                        placeholder="Profile"
+                        placeholder="Enter a Steam ID or custom Steam username"
                         aria-label="Profile"
                         aria-describedby="basic-addon2"
                         value={searchValue}
