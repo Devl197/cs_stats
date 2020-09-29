@@ -6,6 +6,8 @@ import { data } from '../countries';
 import './ProfileData.css';
 
 const ProfileData = ({profile}) => {
+
+    // The function which returns the country name for the given country code
     const findCountry = (countryCode) => {
         if(countryCode)
             for(let i = 0; i < data.length; ++i){
@@ -15,6 +17,8 @@ const ProfileData = ({profile}) => {
             }
        return null;
     }
+
+    // The function which returns profile state string for the given profile state number code
     const returnStateString = (personaStateNum) => {
         switch(personaStateNum){
             case 0:

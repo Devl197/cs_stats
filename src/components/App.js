@@ -13,22 +13,22 @@ function App() {
   const [mainStats, setMainStats] = useState({});
   const [profileData, setProfileData] = useState({});
   const [error, setError] = useState(0);
+  const key = process.env.REACT_APP_API_KEY;
 
+  // The function which populates initial webpage data
   useEffect(() => {
     const fetchProfileData = async () => {
-        //fetchProfileDataById('76561198047422083');
+      fetchProfileDataById('76561198047422083');
     }
     fetchProfileData();
   },[]);
 
-  // Function used for fetching and setting profile and stats state for given id
+  // The function which fetches and sets profile and stats state for the given id
   const fetchProfileDataById = async (id) => {
     try {
-      //const response = await fetch('profile_data.json');
       console.log('fetchingProfileData');
-      const proxy = "https://cors-anywhere.herokuapp.com/";
-      const url = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=6F5F20F0A460975E47AA5614FE4DE924&steamids=${id}`;
-      const response = await fetch(proxy + url);
+      const url = `/ISteamUser/GetPlayerSummaries/v0002/?key=${key}&steamids=${id}`;
+      const response = await fetch(url);
       const data = await response.json();
       resetStates();
       setProfileData(data.response.players[0]);
@@ -44,12 +44,11 @@ function App() {
     }
   }
 
-  // Function which fetches and sets stats data for given id
+  // The function which fetches and sets stats data for the given id
   const fetchStatsData = async (id) => {
     try{
-      const proxy = "https://cors-anywhere.herokuapp.com/";
-      const url = `http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=6F5F20F0A460975E47AA5614FE4DE924&steamid=${id}`;
-      const response = await fetch(proxy + url);
+      const url = `/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=${key}&steamid=${id}`;
+      const response = await fetch(url);
       if(response.ok){
         const data = await response.json();
         setStatsData(data);
@@ -61,11 +60,11 @@ function App() {
     }
   }
 
+  // The function which fetches id for the given custom url
   const fetchProfileDataByURL = async (URL) => {
     try {
-      const proxy = "https://cors-anywhere.herokuapp.com/";
-      const url = `http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=6F5F20F0A460975E47AA5614FE4DE924&vanityurl=${URL}`;
-      const response = await fetch(proxy + url);
+      const url = `/ISteamUser/ResolveVanityURL/v0001/?key=${key}&vanityurl=${URL}`;
+      const response = await fetch(url);
       const data = await response.json();
       // code 42 means that there is no match
       if(data.response.success !== 42){
@@ -80,6 +79,7 @@ function App() {
     }
   }
 
+  // The function which resets states to their initial value 
   const resetStates = () => {
     setProfileData({});
     setMapData({});
@@ -88,13 +88,14 @@ function App() {
     setError(0);
   }
 
+  // The function which checks if the given object is empty
   const isObjectEmpty = (obj) => {
     return Object.keys(obj).length === 0 && obj.constructor === Object;
   }
 
+  // The function which checks if the profile with a certain id doesn't own a game
   const doesntOwnGame = async (id) => {
     try {
-      const proxy = "https://cors-anywhere.herokuapp.com/";
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -103,7 +104,7 @@ function App() {
         headers: myHeaders,
         redirect: 'follow'  
       };
-      const response = await fetch(proxy + `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=6F5F20F0A460975E47AA5614FE4DE924&format=json&input_json={"steamid":${id}, "appids_filter":[730]}`, requestOptions);
+      const response = await fetch(`/IPlayerService/GetOwnedGames/v0001/?key=${key}&format=json&input_json={"steamid":${id}, "appids_filter":[730]}`, requestOptions);
       const data = await response.json();
       return isObjectEmpty(data.response);
 
@@ -112,6 +113,7 @@ function App() {
     }
   }
 
+  // The function which sets weapons,maps and main stats data
   const setStatsData = (data) => {
     const weapons = {};
     const maps = {};
@@ -148,6 +150,7 @@ function App() {
 
   }
 
+  // The function which filters and transforms a name-value pair into a weapon object
   const getWeaponData = (name, value) => {
     const notAllowed = ['against_zoomed_sniper', 'enemy_blinded', 'enemy_weapon', 'knife', 'knife_fight', 'molotov', 'taser', 'hegrenade'];
     let weapon;
@@ -166,6 +169,8 @@ function App() {
     }
     return weapon;
   }
+  
+  // The function which filters and transforms a name-value pair into a map object
   const getMapData = (name, value) => {
     const notAllowed = ['ar_baggage', 'ar_monastery', 'ar_shoots', 'de_bank', 'de_house','de_lake', 'de_safehouse', 'de_shorttrain', 'de_stmarc', 'de_sugarcane'];
     let map;

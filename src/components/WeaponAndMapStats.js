@@ -14,6 +14,7 @@ const WeaponAndMapStats = ({weapons, maps}) => {
     return (
         <Row>
             <Col md="6" sm="12">
+                <h4>Favourite weapons:</h4>
                 <Table hover responsive>
                     <thead>
                         <tr>
@@ -41,6 +42,7 @@ const WeaponAndMapStats = ({weapons, maps}) => {
                 </Table>
             </Col>
             <Col md="6" sm="12">
+                <h4>Favourite maps:</h4>
                 <Table hover responsive>
                     <thead>
                         <tr>

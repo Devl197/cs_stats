@@ -2,6 +2,7 @@
   "name": "cs_stats",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://api.steampowered.com",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",

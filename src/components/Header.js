@@ -8,8 +8,11 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 const Header = ({getProfileDataById, getProfileDataByUrl}) => {
     const [searchValue, setSearchValue] = useState('');
+
+    // On change handler for the search input
     const searchValueHandler = (event) => setSearchValue(event.target.value);
 
+    // On click handler for the search button
     const search = () => {
         if(searchValue !== ''){
             const id = /\d{17}/;
