@@ -40,7 +40,6 @@ function App() {
       const data = await response.json();
       resetStates();
       setProfileData(data.response.players[0]);
-      setLoading(false);
       if(data.response.players[0].communityvisibilitystate !== 3){
         setError(1);
       } else if(await doesntOwnGame(id)) {
@@ -48,6 +47,7 @@ function App() {
       } else {
         fetchStatsData(id);
       }
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -57,16 +57,14 @@ function App() {
   const fetchStatsData = async (id) => {
     try{
       const url = `https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=${key}&steamid=${id}`;
-      setLoading(true);
       const response = await fetch(proxy + url);
       if(response.ok){
         const data = await response.json();
-        setLoading(false);
         setStatsData(data);
       } else {
-        setLoading(false);
         setError(1);
       }
+      setLoading(false);
     } catch(e){
       console.log(e);
     }
