@@ -26,7 +26,7 @@ function App() {
   const fetchProfileDataById = async (id) => {
     try {
       console.log('fetchingProfileData');
-      const url = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${key}&steamids=${id}`;
+      const url = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${key}&steamids=${id}`;
       const response = await fetch(url);
       const data = await response.json();
       resetStates();
@@ -46,7 +46,7 @@ function App() {
   // The function which fetches and sets stats data for the given id
   const fetchStatsData = async (id) => {
     try{
-      const url = `http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=${key}&steamid=${id}`;
+      const url = `https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=${key}&steamid=${id}`;
       const response = await fetch(url);
       if(response.ok){
         const data = await response.json();
@@ -62,7 +62,7 @@ function App() {
   // The function which fetches id for the given custom url
   const fetchProfileDataByURL = async (URL) => {
     try {
-      const url = `http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=${key}&vanityurl=${URL}`;
+      const url = `https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=${key}&vanityurl=${URL}`;
       const response = await fetch(url);
       const data = await response.json();
       // code 42 means that there is no match
@@ -103,7 +103,7 @@ function App() {
         headers: myHeaders,
         redirect: 'follow'  
       };
-      const response = await fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${key}&format=json&input_json={"steamid":${id}, "appids_filter":[730]}`, requestOptions);
+      const response = await fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${key}&format=json&input_json={"steamid":${id}, "appids_filter":[730]}`, requestOptions);
       const data = await response.json();
       return isObjectEmpty(data.response);
 
