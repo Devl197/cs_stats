@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import { data } from '../countries';
 import './ProfileData.css';
+import steam_icon from '../images/other_icons/steam-icon.png';
 
 const ProfileData = ({profile}) => {
 
@@ -17,6 +18,15 @@ const ProfileData = ({profile}) => {
             }
        return null;
     }
+
+    // The function which imports images
+    function importAll(r) {
+        let images = {};
+        r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
+        return images;
+      }
+
+    const flagIcons = importAll(require.context('../images/flags', false, /\.(png|jpe?g|svg)$/));
 
     // The function which returns profile state string for the given profile state number code
     const returnStateString = (personaStateNum) => {
@@ -51,9 +61,9 @@ const ProfileData = ({profile}) => {
                     <Col md={10}>
                         <h1 className="profile_name">{profile.personaname}</h1>
                         <ul className="list-inline">
-                            <li className="list-inline-item"><a href={profile.profileurl} target="_blank" rel="noopener noreferrer" className="text-dark"><Image src={process.env.PUBLIC_URL + 'images/other_icons/steam-icon.png'} width="25px" height="25px"/> Steam profile</a></li>
+                            <li className="list-inline-item"><a href={profile.profileurl} target="_blank" rel="noopener noreferrer" className="text-dark"><Image src={steam_icon} width="25px" height="25px"/> Steam profile</a></li>
                             <li className="list-inline-item">{profile.realname}</li>
-                            <li className="list-inline-item">{profile.loccountrycode ? <Image src={process.env.PUBLIC_URL + 'images/flags/' + profile.loccountrycode + '.png'} /> : null}</li>
+                            <li className="list-inline-item">{profile.loccountrycode ? <Image src={flagIcons[`${profile.loccountrycode.toLowerCase()}.png`]} /> : null}</li>
                             <li className="list-inline-item">{fullCountryName ? fullCountryName : null}</li>
                         </ul>
                         <p id="state" className={state.toLocaleLowerCase()}>{state.replaceAll('_', ' ')}</p>
