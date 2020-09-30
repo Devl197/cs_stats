@@ -26,6 +26,7 @@ const ProfileData = ({profile}) => {
         return images;
       }
 
+      // Importing flag icons
     const flagIcons = importAll(require.context('../images/flags', false, /\.(png|jpe?g|svg)$/));
 
     // The function which returns profile state string for the given profile state number code
