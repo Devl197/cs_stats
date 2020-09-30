@@ -4,6 +4,7 @@ import Header from './Header';
 import MainStats from './MainStats';
 import WeaponAndMapStats from './WeaponAndMapStats';
 import ProfileData from './ProfileData';
+import Loading from './Loading';
 import Alert from './Alert';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [mainStats, setMainStats] = useState({});
   const [profileData, setProfileData] = useState({});
   const [error, setError] = useState(0);
+  const [loading, setLoading] = useState(false);
   const key = process.env.REACT_APP_API_KEY;
   const proxy = process.env.REACT_APP_PROXY;
 
@@ -23,15 +25,22 @@ function App() {
     fetchProfileData();
   },[]);
 
+  // The function that rerenders page upon loading new data
+  useEffect(() => {
+    console.log('Loading...');
+  },[loading, profileData]);
+
   // The function which fetches and sets profile and stats state for the given id
   const fetchProfileDataById = async (id) => {
     try {
       console.log('fetchingProfileData');
       const url = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${key}&steamids=${id}`;
+      setLoading(true);
       const response = await fetch(proxy + url);
       const data = await response.json();
       resetStates();
       setProfileData(data.response.players[0]);
+      setLoading(false);
       if(data.response.players[0].communityvisibilitystate !== 3){
         setError(1);
       } else if(await doesntOwnGame(id)) {
@@ -48,11 +57,14 @@ function App() {
   const fetchStatsData = async (id) => {
     try{
       const url = `https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=${key}&steamid=${id}`;
+      setLoading(true);
       const response = await fetch(proxy + url);
       if(response.ok){
         const data = await response.json();
+        setLoading(false);
         setStatsData(data);
       } else {
+        setLoading(false);
         setError(1);
       }
     } catch(e){
@@ -64,8 +76,11 @@ function App() {
   const fetchProfileDataByURL = async (URL) => {
     try {
       const url = `https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=${key}&vanityurl=${URL}`;
+      resetStates();
+      setLoading(true);
       const response = await fetch(proxy + url);
       const data = await response.json();
+      setLoading(false);
       // code 42 means that there is no match
       if(data.response.success !== 42){
         const id = data.response.steamid;
@@ -193,6 +208,7 @@ function App() {
       <Container>
         { !isObjectEmpty(profileData) ? <ProfileData profile={profileData}/> : null}
         {error !== 0 ? <Alert error={error}/> : null}
+        {loading ? <Loading/> : null}
         { !isObjectEmpty(mainStats) ? <MainStats stats={mainStats}/> : null} 
         { !isObjectEmpty(weaponData) ? <WeaponAndMapStats weapons={weaponData} maps={mapData}/> : null}
       </Container>
