@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/cs_stats/static/css/main.540db233.chunk.css",
+    "main.js": "/cs_stats/static/js/main.295837cb.chunk.js",
+    "main.js.map": "/cs_stats/static/js/main.295837cb.chunk.js.map",
+    "runtime-main.js": "/cs_stats/static/js/runtime-main.a855f51f.js",
+    "runtime-main.js.map": "/cs_stats/static/js/runtime-main.a855f51f.js.map",
+    "static/css/2.d9ad5f5c.chunk.css": "/cs_stats/static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.08d9a7f7.chunk.js": "/cs_stats/static/js/2.08d9a7f7.chunk.js",
+    "static/js/2.08d9a7f7.chunk.js.map": "/cs_stats/static/js/2.08d9a7f7.chunk.js.map",
+    "index.html": "/cs_stats/index.html",
+    "precache-manifest.dfd9256bac98c0bd49fa220cba05f414.js": "/cs_stats/precache-manifest.dfd9256bac98c0bd49fa220cba05f414.js",
+    "service-worker.js": "/cs_stats/service-worker.js",
+    "static/css/2.d9ad5f5c.chunk.css.map": "/cs_stats/static/css/2.d9ad5f5c.chunk.css.map",
+    "static/css/main.540db233.chunk.css.map": "/cs_stats/static/css/main.540db233.chunk.css.map",
+    "static/js/2.08d9a7f7.chunk.js.LICENSE.txt": "/cs_stats/static/js/2.08d9a7f7.chunk.js.LICENSE.txt",
+    "static/media/collection_icon_cs_assault.png": "/cs_stats/static/media/collection_icon_cs_assault.cf5b67b8.png",
+    "static/media/collection_icon_cs_italy.png": "/cs_stats/static/media/collection_icon_cs_italy.f8c954ec.png",
+    "static/media/collection_icon_cs_militia.png": "/cs_stats/static/media/collection_icon_cs_militia.6dadc440.png",
+    "static/media/collection_icon_cs_office.png": "/cs_stats/static/media/collection_icon_cs_office.c690f4fc.png",
+    "static/media/collection_icon_de_cbble.png": "/cs_stats/static/media/collection_icon_de_cbble.32765bbc.png",
+    "static/media/collection_icon_de_dust.png": "/cs_stats/static/media/collection_icon_de_dust.a6e8feaf.png",
+    "static/media/collection_icon_de_dust2.png": "/cs_stats/static/media/collection_icon_de_dust2.a916f965.png",
+    "static/media/collection_icon_de_inferno.png": "/cs_stats/static/media/collection_icon_de_inferno.2ff1294f.png",
+    "static/media/collection_icon_de_mirage.png": "/cs_stats/static/media/collection_icon_de_mirage.d87203aa.png",
+    "static/media/collection_icon_de_nuke.png": "/cs_stats/static/media/collection_icon_de_nuke.bd86083d.png",
+    "static/media/collection_icon_de_overpass.png": "/cs_stats/static/media/collection_icon_de_overpass.a655b8fb.png",
+    "static/media/collection_icon_de_vertigo.png": "/cs_stats/static/media/collection_icon_de_vertigo.8cb2ff79.png",
+    "static/media/knife.png": "/cs_stats/static/media/knife.faee6165.png",
+    "static/media/index.css": "/cs_stats/static/media/mishmash.44f81204.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a855f51f.js",
+    "static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.08d9a7f7.chunk.js",
+    "static/css/main.540db233.chunk.css",
+    "static/js/main.295837cb.chunk.js"
+  ]
+}
