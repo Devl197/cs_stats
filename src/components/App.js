@@ -13,6 +13,7 @@ function App() {
   const [profileData, setProfileData] = useState({});
   const [error, setError] = useState(0);
   const key = process.env.REACT_APP_API_KEY;
+  const proxy = process.env.REACT_APP_PROXY;
 
   // The function which populates initial webpage data
   useEffect(() => {
@@ -27,7 +28,7 @@ function App() {
     try {
       console.log('fetchingProfileData');
       const url = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${key}&steamids=${id}`;
-      const response = await fetch(url);
+      const response = await fetch(proxy + url);
       const data = await response.json();
       resetStates();
       setProfileData(data.response.players[0]);
@@ -47,7 +48,7 @@ function App() {
   const fetchStatsData = async (id) => {
     try{
       const url = `https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=${key}&steamid=${id}`;
-      const response = await fetch(url);
+      const response = await fetch(proxy + url);
       if(response.ok){
         const data = await response.json();
         setStatsData(data);
@@ -63,7 +64,7 @@ function App() {
   const fetchProfileDataByURL = async (URL) => {
     try {
       const url = `https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=${key}&vanityurl=${URL}`;
-      const response = await fetch(url);
+      const response = await fetch(proxy + url);
       const data = await response.json();
       // code 42 means that there is no match
       if(data.response.success !== 42){
@@ -103,7 +104,7 @@ function App() {
         headers: myHeaders,
         redirect: 'follow'  
       };
-      const response = await fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${key}&format=json&input_json={"steamid":${id}, "appids_filter":[730]}`, requestOptions);
+      const response = await fetch(proxy + `https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${key}&format=json&input_json={"steamid":${id}, "appids_filter":[730]}`, requestOptions);
       const data = await response.json();
       return isObjectEmpty(data.response);
 
